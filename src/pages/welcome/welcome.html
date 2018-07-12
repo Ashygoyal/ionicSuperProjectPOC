@@ -1,0 +1,53 @@
+<ion-content scroll="false">
+  <div class="splash-bg"></div>
+  <div class="splash-info">
+    <div class="splash-logo"></div>
+    <div class="splash-intro">
+      {{ 'WELCOME_INTRO' | translate }}
+    </div>
+  </div>
+  <!-- <div padding>
+    <button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button>
+    <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>
+  </div> -->
+  <div padding>
+  </div>
+  <ion-grid>
+    <ion-card>
+      <ion-row style="height: 50px;">
+        <ion-col col-6>
+          1234-5678-8765-4321
+        </ion-col>
+        <ion-col col-6>
+          Valid till 3/2021
+        </ion-col>
+      </ion-row>
+      <ion-row class="row-border" style="height: 35px;">
+        <ion-col col-6 style="border-right: 1px solid #ECEAE8">
+          Upcoming Reservations
+        </ion-col>
+        <ion-col col-6>
+          Past Reservations
+        </ion-col>
+      </ion-row>
+      <ion-row style="height: 50px; text-align: center; ">
+          <div style="width: 100%;">You have no upcoming reservations</div>
+      </ion-row>
+    </ion-card>
+    <ion-row>
+      <ion-col>
+        <button ion-button color="secondary" round (click)="sendToWhatsapp()">
+          Whatsapp Me!
+        </button>
+        <button ion-button color="danger" round (click)="demoFunction()">
+          Share
+        </button>
+        <button ion-button (click)="smsFunction()">share via SMS</button>
+        <button ion-button color="secondary" outline (click)="useInsta()">share via Instagram</button>
+        <button ion-button color="dark" block (click)="useFB()">share via Facebook</button>
+        <button ion-button (click)="toTwitter()">share via Twitter</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
