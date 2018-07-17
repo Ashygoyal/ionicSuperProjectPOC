@@ -21,7 +21,7 @@ export class WelcomePage {
   passwordL: string;
   textL: string;
 
-  result:object={};
+  result:any=[];
   data:Observable<any>;
   constructor(public navCtrl: NavController, public http: HttpClient) { }
 
@@ -43,8 +43,9 @@ export class WelcomePage {
     //   this.data = data;
     // });
     this.data.subscribe(data=> {
-      console.log(data);
+      console.log(data, this.result);
       this.result = data;
+      console.log(this.result)
     });
     }
   else {
