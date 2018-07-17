@@ -49,5 +49,24 @@
       </ion-col>
     </ion-row>
 
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input [(ngModel)]="usernameL" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="passwordL"></ion-input>
+      </ion-item>      
+      <ion-item>
+        <ion-textarea placeholder= "Enter your bio here" [(ngModel)]="textL"></ion-textarea>
+      </ion-item>
+      Hi, {{usernameL}}
+      <button ion-button color="danger" round (click)="usernameButton()">Show Bio</button> 
+      <button ion-button color="secondary" full (click)="loginMe()">LogIn</button> 
+      <button ion-button color="light" full (click)="registerMe()">Register</button>
+    </ion-list>
+    <ion-row> ID from Server is: {{result.id}} </ion-row>
+    <ion-row> Title from Server is: {{result.title}}</ion-row>
   </ion-grid>
 </ion-content>

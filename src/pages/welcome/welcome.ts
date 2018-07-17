@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import { MyPage1Page } from '../my-page1/my-page1';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -13,8 +16,14 @@ import { IonicPage, NavController } from 'ionic-angular';
   templateUrl: 'welcome.html'
 })
 export class WelcomePage {
+  //public inputValue:string;
+  usernameL: string;
+  passwordL: string;
+  textL: string;
 
-  constructor(public navCtrl: NavController) { }
+  result:object={};
+  data:Observable<any>;
+  constructor(public navCtrl: NavController, public http: HttpClient) { }
 
   login() {
     this.navCtrl.push('LoginPage');
@@ -24,16 +33,38 @@ export class WelcomePage {
     this.navCtrl.push('SignupPage');
   }
 
+  async loginMe(){ // onClick of Login button of Welcome Page
+    console.log("Username is: "+ this.usernameL + " and " + "Password is: "+ this.passwordL); 
+    if(this.usernameL.length !== 0 && this.passwordL.length !==0){
+    var url="https://jsonplaceholder.typicode.com/posts/2";
+    this.data = await this.http.get(url); // this is the asynchronous way
+    // this.http.get(url).subscribe(data=> {  // this is the sync way to get data
+    //   console.log(data);
+    //   this.data = data;
+    // });
+    this.data.subscribe(data=> {
+      console.log(data);
+      this.result = data;
+    });
+    }
+  else {
+    alert('Fill both fields: Username and Password');
+    }
+  }
+
+  registerMe(){
+    this.navCtrl.push(MyPage1Page);
+  }
+
   sendToWhatsapp() {
       window['plugins'].socialsharing.canShareVia('whatsapp', 'msg', null, null, null, function(e){alert(e)}, function(e){alert(e)});
       window['plugins'].socialsharing.shareViaWhatsAppToPhone ('+917676343714', 'Message via WhatsApp', 'https://www.google.nl/images/srpr/logo4w.png' /* img */, null /* url */, 
       function() {console.log('share ok')}
       );
-
   }
 
   justShare(){
-    //window['plugins'].socialsharing.share('Message only');
+    window['plugins'].socialsharing.share('Message only');
     
   }
 
@@ -55,5 +86,9 @@ export class WelcomePage {
 
   demoFunction(){
     console.log('I am clicked');
+  }
+
+  usernameButton(){
+    alert(this.textL);
   }
 }
