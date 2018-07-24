@@ -68,5 +68,14 @@
     </ion-list>
     <ion-row> ID from Server is: {{result.id}} </ion-row>
     <ion-row> Title from Server is: {{result.title}}</ion-row>
+
+    <ion-item>
+      <ion-range min="1" max="20" step="1" snaps="true" pin="true" [(ngModel)]="guests" color="danger">
+        <ion-icon range-left small color="danger" name="person-add"></ion-icon>
+        <ion-icon range-right color="danger" name="person-add"></ion-icon>
+      </ion-range>
+    </ion-item>
+    Number of Guests: {{guests}}
+
   </ion-grid>
 </ion-content>

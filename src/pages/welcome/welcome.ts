@@ -3,6 +3,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { MyPage1Page } from '../my-page1/my-page1';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+//import { TooltipsModule } from 'ionic-tooltips';
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -92,4 +93,9 @@ export class WelcomePage {
   usernameButton(){
     alert(this.textL);
   }
+
+  tooltipEvent: 'click' | 'press' = 'click';
+  showArrow: boolean = true;
+  duration: number = 3000;
+
 }
