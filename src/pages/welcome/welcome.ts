@@ -3,6 +3,8 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { MyPage1Page } from '../my-page1/my-page1';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -21,9 +23,27 @@ export class WelcomePage {
   passwordL: string;
   textL: string;
 
+  options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.FILE_URI,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+
+  useCamera(){
+    this.camera.getPicture(this.options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      let base64Image = 'data:image/jpeg;base64,' + imageData;
+      console.log(base64Image);
+     }, (err) => {
+      // Handle error
+     });
+  }
+
   result:any=[];
   data:Observable<any>;
-  constructor(public navCtrl: NavController, public http: HttpClient) { }
+  constructor(public navCtrl: NavController, public http: HttpClient, private camera: Camera) { }
 
   login() {
     this.navCtrl.push('LoginPage');
@@ -96,5 +116,7 @@ export class WelcomePage {
   tooltipEvent: 'click' | 'press' = 'click';
   showArrow: boolean = true;
   duration: number = 3000;
+
+  // native cmer
 
 }
